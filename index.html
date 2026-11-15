@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy Shopping | Online Marketplace</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eaeded;
+    color: #222;
+}
+
+/* MAIN HEADER */
+.header {
+    background: #131921;
+    color: white;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 4%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #ffad32;
+}
+
+.search {
+    display: flex;
+    flex: 1;
+    max-width: 650px;
+    height: 43px;
+}
+
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.search button {
+    width: 55px;
+    border: none;
+    background: #febd69;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.header-item {
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.header-item strong {
+    display: block;
+    font-size: 15px;
+}
+
+.cart {
+    cursor: pointer;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+/* SECOND NAVIGATION */
+.nav {
+    background: #232f3e;
+    color: white;
+    display: flex;
+    gap: 27px;
+    padding: 15px 4%;
+    overflow-x: auto;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    min-height: 380px;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.05)),
+      url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600") center/cover;
+    display: flex;
+    align-items: center;
+    padding: 50px 7%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 55px);
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.shop-btn {
+    background: #ffad32;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MAIN CONTENT */
+.container {
+    padding: 30px 4%;
+}
+
+.section-title {
+    font-size: 25px;
+    margin-bottom: 22px;
+}
+
+/* CATEGORY GRID */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.category {
+    background: white;
+    padding: 22px 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px #0002;
+}
+
+.category .icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.category h3 {
+    font-size: 15px;
+}
+
+/* PRODUCT GRID */
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 16px;
+    border-radius: 5px;
+    transition: .2s;
+}
+
+.product:hover {
+    box-shadow: 0 5px 18px #0002;
+    transform: translateY(-3px);
+}
+
+.product img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    font-size: 16px;
+    min-height: 40px;
+    line-height: 1.4;
+}
+
+.rating {
+    color: #f5a623;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.product button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #ffd814;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.product button:hover {
+    background: #f7ca00;
+}
+
+/* FOOTER */
+footer {
+    background: #131a22;
+    color: white;
+    margin-top: 30px;
+}
+
+.back-top {
+    background: #37475a;
+    text-align: center;
+    padding: 17px;
+    cursor: pointer;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 45px 20px;
+}
+
+.footer-content h3 {
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+    color: #ccc;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding: 22px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 950px) {
+    .categories {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+
+    .header-item {
+        display: none;
+    }
+
+    .nav {
+        gap: 20px;
+    }
+
+    .hero {
+        min-height: 320px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product {
+        padding: 10px;
+    }
+
+    .product img {
+        height: 140px;
+    }
+
+    .product h3 {
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        padding: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo">
+        Legacy<span>Shopping</span>
+    </div>
+
+    <div class="header-item">
+        <span>Deliver to</span>
+        <strong>📍 Nigeria</strong>
+    </div>
+
+    <div class="search">
+        <input id="searchInput" placeholder="Search for products...">
+        <button onclick="searchProducts()">⌕</button>
+    </div>
+
+    <div class="header-item">
+        <span>Hello, welcome</span>
+        <strong>Account & Lists</strong>
+    </div>
+
+    <div class="cart" onclick="showCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </div>
+
+</header>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <a href="#">☰ All</a>
+    <a href="#deals">Today's Deals</a>
+    <a href="#categories">Electronics</a>
+    <a href="#categories">Computers</a>
+    <a href="#categories">Fashion</a>
+    <a href="#categories">Gaming</a>
+    <a href="#categories">Home</a>
+    <a href="#categories">Beauty</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Discover a World of Possibilities.</h1>
+        <p>
+            From everyday essentials to the latest technology,
+            find everything you need at Legacy Shopping.
+        </p>
+        <button class="shop-btn"
+                onclick="document.getElementById('deals').scrollIntoView({behavior:'smooth'})">
+            Shop Now →
+        </button>
+    </div>
+</section>
+
+<!-- MAIN -->
+<main class="container">
+
+    <section id="categories">
+        <h2 class="section-title">Explore Our Categories</h2>
+
+        <div class="categories">
+            <div class="category" onclick="filterCategory('Computers')">
+                <div class="icon">💻</div>
+                <h3>Computers</h3>
+            </div>
+
+            <div class="category" onclick="filterCategory('Electronics')">
+                <div class="icon">📱</div>
+                <h3>Electronics</h3>
+            </div>
+
+            <div class="category" onclick="filterCategory('Fashion')">
+                <div class="icon">👕</div>
+                <h3>Fashion</h3>
+            </div>
+
+            <div class="category" onclick="filterCategory('Gaming')">
+                <div class="icon">🎮</div>
+                <h3>Gaming</h3>
+            </div>
+
+            <div class="category" onclick="filterCategory('Home')">
+                <div class="icon">🏠</div>
+                <h3>Home</h3>
+            </div>
+
+            <div class="category" onclick="filterCategory('Beauty')">
+                <div class="icon">💄</div>
+                <h3>Beauty</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="deals">
+        <h2 class="section-title">Today's Deals</h2>
+        <div class="products" id="productGrid"></div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="back-top"
+         onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        Back to top ↑
+    </div>
+
+    <div class="footer-content">
+        <div>
+            <h3>About Us</h3>
+            <p>About Legacy Shopping</p>
+            <p>Our Story</p>
+        </div>
+
+        <div>
+            <h3>Sell With Us</h3>
+            <p>Become a Seller</p>
+            <p>Sell Your Products</p>
+        </div>
+
+        <div>
+            <h3>Customer Service</h3>
+            <p>Help Center</p>
+            <p>Contact Us</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 Legacy Shopping. All rights reserved.
+    </div>
+</footer>
+
+<script>
+const products = [
+    {
+        id: 1,
+        name: "Wireless Bluetooth Headphones",
+        category: "Electronics",
+        price: 45000,
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+    },
+    {
+        id: 2,
+        name: "Premium Laptop",
+        category: "Computers",
+        price: 850000,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
+    },
+    {
+        id: 3,
+        name: "Modern Smartphone",
+        category: "Electronics",
+        price: 650000,
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500"
+    },
+    {
+        id: 4,
+        name: "Classic Smart Watch",
+        category: "Electronics",
+        price: 120000,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+    },
+    {
+        id: 5,
+        name: "Gaming Controller",
+        category: "Gaming",
+        price: 85000,
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1592840496694-26c035b52bca?w=500"
+    },
+    {
+        id: 6,
+        name: "Mechanical Gaming Keyboard",
+        category: "Gaming",
+        price: 95000,
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500"
+    },
+    {
+        id: 7,
+        name: "Modern Backpack",
+        category: "Fashion",
+        price: 55000,
+        rating: 4,
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500"
+    },
+    {
+        id: 8,
+        name: "Running Sneakers",
+        category: "Fashion",
+        price: 75000,
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+    }
+];
+
+let cart = JSON.parse(localStorage.getItem("legacyCart")) || [];
+
+function displayProducts(list) {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = "";
+
+    if (list.length === 0) {
+        grid.innerHTML = "<p>No products found.</p>";
+        return;
+    }
+
+    list.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <div class="rating">${"★".repeat(product.rating)}${"☆".repeat(5-product.rating)}</div>
+            <p class="price">₦${product.price.toLocaleString("en-NG")}</p>
+            <button>Add to Cart</button>
+        `;
+
+        card.querySelector("button").addEventListener("click", () => {
+            cart.push(product);
+            localStorage.setItem("legacyCart", JSON.stringify(cart));
+            updateCart();
+            alert("Added to your cart!");
+        });
+
+        grid.appendChild(card);
+    });
+}
+
+function updateCart() {
+    document.getElementById("cartCount").textContent = cart.length;
+}
+
+function searchProducts() {
+    const term = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    displayProducts(products.filter(p =>
+        p.name.toLowerCase().includes(term) ||
+        p.category.toLowerCase().includes(term)
+    ));
+}
+
+function filterCategory(category) {
+    displayProducts(products.filter(p => p.category === category));
+    document.getElementById("deals").scrollIntoView({behavior: "smooth"});
+}
+
+function showCart() {
+    alert("You currently have " + cart.length + " item(s) in your cart.");
+}
+
+document.getElementById("searchInput").addEventListener("keydown", event => {
+    if (event.key === "Enter") searchProducts();
+});
+
+displayProducts(products);
+updateCart();
+</script>
+
+</body>
+</html>
